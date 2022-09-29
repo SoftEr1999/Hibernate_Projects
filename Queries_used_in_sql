@@ -1,0 +1,26 @@
+create database newd;
+use newd;
+create table Company ( company_id int, company_name varchar(25), company_city varchar(25),
+primary key(company_id) );
+create table items ( items_id int,items_name varchar(25), unit_sold int, company_id int,
+primary key(items_id), foreign key(company_id) references Company(company_id) );
+
+
+insert into company values(1,'Dominos','Los Angeles'),(2,'Pizza Hut','San Francisco'),
+(3,'Papa Johns','San Diego'),(4,'Ah Pizz','Foremont'),(5,'Nino Pizza','Las Vegas'),
+(6,'Pizzeria','Boston'),(7,'Chuck e Cheese','Chicago');
+
+insert into items values(1,'Large Pizza',5,2),(2,'Garlic Knots',6,3),(3,'Large Pizza',3,3),
+(4,'Medium Pizza',8,4),(5,'Breadsticks',7,1),(6,'Mesium Pizza',11,1),(7,'Small Pizza',9,6),
+(8,'Small Pizza',6,7);
+
+select * from company;
+select * from items;
+
+select items.items_name,company.company_city,items.unit_sold
+from company
+inner join items
+on company.company_id=items.items_id;
+
+
+
